@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: farol-ewz-options-monitor
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 1 --threads 4 --timeout 120
+    healthCheckPath: /health
+    disk:
+      name: ewz-history
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DB_PATH
+        value: /var/data/ewz_history.sqlite3
+      - key: AUTO_MINUTES
+        value: "15"
+      - key: APP_USERNAME
+        sync: false
+      - key: APP_PASSWORD
+        sync: false

@@ -1,0 +1,42 @@
+FAROL TRADERS — EWZ OPTIONS MONITOR LOCAL
+========================================
+
+REQUISITOS
+- Windows 10/11
+- Python 3.11 ou superior (https://www.python.org/downloads/)
+- Internet para consultar Yahoo Finance
+
+INSTALAÇÃO / EXECUÇÃO
+1. Extraia a pasta para um local do seu computador.
+2. Dê dois cliques em INICIAR_FAROL_EWZ.bat.
+3. Na primeira execução, o instalador cria um ambiente Python local e instala as bibliotecas.
+4. O navegador abrirá em http://127.0.0.1:8765.
+5. Mantenha a janela preta aberta enquanto usa o dashboard.
+
+RECURSOS
+- Busca da cadeia de opções do EWZ no Yahoo Finance via yfinance.
+- Seleção de vencimento.
+- Gráfico separado de Calls e Puts por strike.
+- Atualização manual pelo botão Atualizar agora.
+- Atualização automática enquanto a página está aberta; padrão 15 minutos, ajustável.
+- Snapshot persistido no arquivo ewz_history.sqlite3.
+- Comparação com o snapshot anterior do mesmo vencimento.
+- Exportação do histórico para CSV.
+
+HISTÓRICO E COMPARAÇÃO
+Cada atualização salva um snapshot local. A tabela compara a captura atual com a captura salva imediatamente anterior para o mesmo vencimento. A primeira captura não terá variação anterior para comparar.
+O Open Interest não necessariamente muda a cada atualização; a fonte pode publicar valores atrasados ou manter o mesmo valor durante várias consultas.
+
+DADOS E LIMITAÇÕES
+- yfinance é uma biblioteca comunitária, não uma API oficial garantida pelo Yahoo.
+- O Yahoo pode limitar/bloquear requisições, alterar respostas ou não retornar dados.
+- A aplicação não envia os dados para um servidor próprio: o serviço escuta apenas em 127.0.0.1 (computador local).
+- A conexão com a internet continua necessária para consultar a cadeia.
+- O histórico fica no arquivo ewz_history.sqlite3 dentro desta pasta. Faça backup desse arquivo para preservar os snapshots.
+- Não use o dashboard como recomendação de investimento.
+
+SOLUÇÃO DE PROBLEMAS
+- Se o Yahoo falhar, espere alguns minutos e tente novamente.
+- Se a porta 8765 estiver ocupada, feche outra instância do app ou altere PORT no ambiente antes de iniciar.
+- Para abrir manualmente, acesse http://127.0.0.1:8765 após executar o .bat.
+\nVERSAO ONLINE\nPara publicar no Render com GitHub, consulte README_ONLINE.md e render.yaml. A versao online exige configurar usuario/senha e um disco persistente.\n
