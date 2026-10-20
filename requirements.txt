@@ -1,1 +1,4 @@
-Flask>=3.0,<4.0\nyfinance>=0.2.54\npandas>=2.0\ngunicorn>=22.0\n
+Flask>=3.0,<4.0
+yfinance>=0.2.54
+pandas>=2.0
+gunicorn>=22.0
